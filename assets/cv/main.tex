@@ -1,0 +1,469 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=1.4 cm, % seperation between body and page edge from the top
+    bottom=1.4 cm, % seperation between body and page edge from the bottom
+    left=1.8 cm, % seperation between body and page edge from the left
+    right=1.8 cm, % seperation between body and page edge from the right
+    % footskip=0.5 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage[explicit]{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 79, 144} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{academicons} % for academic icons (requires xelatex/lualatex)
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Alireza Bayat Makou's CV},
+    pdfauthor={Alireza Bayat Makou},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+% \usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage[default, type1]{sourcesanspro} 
+
+% Some settings:
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\makeatletter
+\let\ps@customFooterStyle\ps@plain % Copy the plain style to customFooterStyle
+% \patchcmd{\ps@customFooterStyle}{\thepage}{
+%     \color{gray}\textit{\small Alireza Bayat Makou - Page \thepage{} of \pageref*{LastPage}}
+% }{}{} % replace number by desired string
+\makeatother
+% \pagestyle{customFooterStyle}
+
+\titleformat{\section}{
+    % avoid page braking right after the section title
+    \needspace{4\baselineskip}
+    % make the font size of the section title large and color it with the primary color
+    \Large\color{primaryColor}
+}{
+}{
+}{
+    % print bold title, give 0.15 cm space and draw a line of 0.8 pt thickness
+    % from the end of the title to the end of the body
+    \textbf{#1}\hspace{0.15cm}\titlerule[0.8pt]\hspace{-0.1cm}
+}[] % section title formatting
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+% \renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0.2 cm + 0.00001 cm
+    }{
+        0.2 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \begin{adjustwidth}{0.2 cm + 0.00001 cm}{0.2 cm + 0.00001 cm}%
+    \par\noindent%
+    \parshape 2 0pt \dimexpr\linewidth-4.5cm\relax\space 0pt \linewidth\relax%
+    \rlap{\makebox[\linewidth][r]{#2}}%
+    \ignorespaces
+}{%
+    \par\nobreak
+    \end{adjustwidth}
+} % twocolentry: date floated right on first line; body flows full width below
+
+\newenvironment{threecolentry}[3][]{
+    \begin{adjustwidth}{0.2 cm + 0.00001 cm}{0.2 cm + 0.00001 cm}%
+    \par\noindent%
+    \parshape 2 0pt \dimexpr\linewidth-4.5cm\relax\space 1.5cm \dimexpr\linewidth-1.5cm\relax\space%
+    \rlap{\makebox[\linewidth][r]{#3}}%
+    \makebox[1.5cm][l]{#2}%
+    \ignorespaces
+}{%
+    \par\nobreak
+    \end{adjustwidth}
+} % threecolentry: label on left + date on right on first line; body flows wide below
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\color{primaryColor}\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0.2 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in May 2024}\hspace{\widthof{Last updated in May 2024}}
+    }}}%
+  }%
+}%
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% new command for external links:
+\renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\mbox{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}}
+
+
+\begin{document}
+    % \placelastupdatedtext
+    \begin{header}
+        \fontsize{30 pt}{30 pt}
+        \textbf{Alireza Bayat Makou}
+
+        % \vspace{0.3 cm}
+
+        \normalsize
+        % \mbox{{\footnotesize\faMapMarker*}\hspace*{0.13cm}Your Location}
+        \kern 0.3 cm
+        \mbox{\hrefWithoutArrow{mailto:a.bayatmakou@gmail.com}{{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}a.bayatmakou@gmail.com}}
+        \kern 0.3 cm
+        \mbox{\hrefWithoutArrow{tel:+49-15141937478}{{\footnotesize\faPhone*}\hspace*{0.13cm}+49-15141937478}}
+        \kern 0.3 cm
+        \mbox{\hrefWithoutArrow{https://scholar.google.com/citations?user=Q9rvc9cAAAAJ&hl=en}{{\small\aiGoogleScholar}\hspace*{0.13cm}Scholar}}
+        \kern 0.3 cm
+        % \mbox{\hrefWithoutArrow{https://yourwebsite.com/}{{\footnotesize\faLink}\hspace*{0.13cm}yourwebsite.com}}
+        % \kern 0.3 cm
+        % \mbox{\hrefWithoutArrow{https://www.linkedin.com/in/alireza-bayat-makou/}{{\footnotesize\faLinkedinIn}\hspace*{0.13cm}alireza-bayat-makou}}
+        % \kern 0.3 cm
+        \mbox{\hrefWithoutArrow{https://github.com/alirezabayatmk}{{\footnotesize\faGithub}\hspace*{0.13cm}alirezabayatmk}}
+        \kern 0.3 cm
+    \end{header}
+
+    % \vspace{0.3 cm - 0.3 cm}
+
+
+    \section{Research Interests}
+        \begin{onecolentry}
+            My research focuses on mechanistic interpretability of large language models. I study methods for discovering and evaluating circuits, including activation patching, causal interventions, and automated circuit-discovery approaches, with an emphasis on methodological reliability and the relationship between discovered structures and model behavior.
+        \end{onecolentry}
+
+ 
+
+
+    \section{Education}
+        \begin{twocolentry}{
+            2025 - Present
+        }
+            \textbf{\textcolor{RoyalBlue}{Technical University of Darmstadt}}, Ph.D. in Computer Science, UKP Lab
+            \begin{highlights}
+                \item \textbf{Research Focus:} Mechanistic interpretability and circuit discovery in LLMs.
+                \item \textbf{Advisor:} Prof. Iryna Gurevych
+                \item \textbf{Project Lead:} Murano, the mechanistic interpretability research design framework.
+                \item \textbf{Mentoring:} Co-supervising Hanifi Akdag (M.Sc., TU Darmstadt), jointly with Jingcheng (Frank) Niu.
+            \end{highlights}
+        \end{twocolentry}
+        \vspace{0.5em}
+        \begin{twocolentry}{
+            2021 - 2025
+        }
+            \textbf{\textcolor{RoyalBlue}{Leibniz University Hanover}}, M.Sc. in Computer Science (Track: AI)
+            \begin{highlights}
+                % \item GPA: 3.9/4.0 (\href{https://example.com}{Transcript})
+                \item \textbf{Thesis:} SmartPEFT: Automatic Hyperparameter Tuning for Improved Parameter-Efficient Fine-Tuning of Large Language Models
+                \item \textbf{First Examiner:} Prof. Marius Lindauer (AutoML Group, LUHAI)
+            \end{highlights}
+        \end{twocolentry}
+        \vspace{0.5em}
+        \begin{twocolentry}{
+            2015 - 2021
+        }
+            \textbf{\textcolor{RoyalBlue}{Kharazmi University}}, B.Eng. in Computer Engineering (Track: Software Engineering)
+            \begin{highlights}
+                % \item GPA: 3.9/4.0 (\href{https://example.com}{Transcript})
+                \item \textbf{Thesis:} Twitter Bot Detection via Large-Scale Account-Level Feature Analysis and Similarity-Based Clustering
+            \end{highlights}
+        \end{twocolentry}
+
+
+    \section{Publications}
+        \begin{samepage}
+            \begin{onecolentry}
+                Decoupled Agendas Under Repression: Social Media and State Media During \mbox{COVID-19} in Iran.\\
+                {\small Kermani, H., \textbf{Bayat Makou, A.}, \& Behzadian Nejad, R. \textit{Frontiers in Communication}, 10:1598405, 2025. \href{https://www.frontiersin.org/journals/communication/articles/10.3389/fcomm.2025.1598405/full}{[paper]}}
+            \end{onecolentry}
+            \vspace{0.8em}
+            \begin{onecolentry}
+                LLM-based Rewriting of Inappropriate Argumentation using Reinforcement Learning from Machine Feedback.\\
+                {\small Ziegenbein, T., Skitalinskaya, G., \textbf{Bayat Makou, A.}, \& Wachsmuth, H. \textit{ACL} 2024, pp. 4455--4476. \href{https://aclanthology.org/2024.acl-long.244/}{[paper]}}
+            \end{onecolentry}
+            \vspace{0.8em}
+            \begin{onecolentry}
+                Bots Versus Humans: Discursive Activism During the Pandemic in the Iranian Twittersphere.\\
+                {\small Kermani, H., \textbf{Bayat Makou, A.}, Tafreshi, A., Mohamad Ghodsi, A., \& Ataee, H. \textit{Social Media + Society}, 9(4), 2023. \href{https://journals.sagepub.com/doi/full/10.1177/20563051231216927}{[paper]}}
+            \end{onecolentry}
+            \vspace{0.8em}
+            \begin{onecolentry}
+                Computational vs. Qualitative: Analyzing Different Approaches in Identifying Networked Frames During the \mbox{Covid-19} Crisis.\\
+                {\small Kermani, H., \textbf{Bayat Makou, A.}, Tafreshi, A., Ghodsi, A. M., Atashzar, A., \& Nojoumi, A. \textit{International Journal of Social Research Methodology}, 2023. \href{https://www.tandfonline.com/doi/full/10.1080/13645579.2023.2186566}{[paper]}}
+            \end{onecolentry}
+        \end{samepage}
+
+
+    \section{Research Experience}
+        \begin{twocolentry}{
+            May 2024 - Sep. 2024
+            }
+            \textbf{\textcolor{RoyalBlue}{Student Research Assistant}}\\
+            \textit{L3S - Leibniz University Hanover}
+            \begin{highlights}
+                \item Designed the system architecture and developed embedding-based retrieval components for a research search-engine project.
+                \item Produced an internal literature review on text representations, embedding methods, and retrieval evaluation.
+            \end{highlights}
+        \end{twocolentry}
+
+        \vspace{0.1 cm}
+
+        \begin{twocolentry}{
+            Apr. 2023 - Dec. 2023
+            }
+            \textbf{\textcolor{RoyalBlue}{Student Research Assistant}}\\
+            \textit{Institute of Artificial Intelligence (LUHAI) - Leibniz University Hanover}
+            \begin{highlights}
+                \item Contributed to an ACL 2024 project on LLM-based rewriting of inappropriate argumentation; supported text-style-transfer experiments, evaluation design, and analysis of rewritten social-media arguments.
+            \end{highlights}
+        \end{twocolentry}
+
+
+    \section{Teaching Experience}
+        \begin{twocolentry}{
+            Winter Semester 2026/27 (assigned)
+            }
+            \textbf{\textcolor{RoyalBlue}{Teaching Assistant, Introduction to Large Language Models}}\\
+            \textit{TU Darmstadt}
+            \begin{highlights}
+                \item Will deliver lectures and exercises for the LLM portion of the course.
+            \end{highlights}
+        \end{twocolentry}
+
+        \vspace{0.1 cm}
+
+        \begin{twocolentry}{
+            Jun. 2022 - Oct. 2022
+            }
+            \textbf{\textcolor{RoyalBlue}{Natural Language Processing Instructor}}\\
+            \textit{Filoger Academy of AI}
+            \begin{highlights}
+                \item Designed and delivered ``Natural Language Processing: A Practical Comprehensive Approach'' with full curriculum and hands-on coding sessions (\textasciitilde30 hours, 50--60 students).
+            \end{highlights}
+        \end{twocolentry}
+
+        \vspace{0.1 cm}
+
+        \begin{twocolentry}{
+            Aug. 2020 - Mar. 2021
+            }
+            \textbf{\textcolor{RoyalBlue}{Natural Language Processing Instructor}}\\
+            \textit{Loop Academy of AI}
+            \begin{highlights}
+                \item Designed and delivered two NLP courses with full curriculum and hands-on coding sessions (\textasciitilde30 hours each, 50--60 students per course): ``From One-hot to GPT-3: Introduction to Text Representation \& Language Modeling''; ``Fundamentals of Natural Language Processing''.
+            \end{highlights}
+        \end{twocolentry}
+
+
+
+
+    \section{Industry Experience}
+        \begin{twocolentry}{
+            Sep. 2022 - Mar. 2023
+            }
+            \textbf{\textcolor{RoyalBlue}{Data Science / NLP Intern}}\\
+            \textit{Vodafone}
+            \begin{highlights}
+                \item Designed and developed a GPT-3-based summarization pipeline for chatbot-to-human handovers, achieving over 50\% reduction in customer issue reading time.
+                \item Collaborated on a Question-Answering / RAG component over internal wiki documents, reducing lookup time for support agents.
+                \item Benchmarked GPT-family and encoder-decoder models (T5, BART) for dialogue summarization; co-designed a human-annotation interface for ongoing evaluation.
+            \end{highlights}
+        \end{twocolentry}
+
+        \vspace{0.1 cm}
+
+        \begin{twocolentry}{
+            Nov. 2020 - Jun. 2021
+        }
+            \textbf{\textcolor{RoyalBlue}{Machine Learning Engineer}}\\
+            \textit{Astyage (Insurance Startup)}
+            \begin{highlights}
+                \item Designed and implemented a data collection and annotation pipeline for constructing an insurance knowledge base and Question-Answering dataset.
+                \item Built and deployed an insurance customer-service chatbot using Rasa with custom intent/entity fine-tuning and dialogue-story design; deployed at a major insurance provider.
+            \end{highlights}
+        \end{twocolentry}
+
+        \vspace{0.1 cm}
+        % \newpage
+
+        \begin{twocolentry}{
+            Apr. 2019 - Sep. 2020
+            }
+            \textbf{\textcolor{RoyalBlue}{Co-Founder \& Machine Learning Engineer}}\\
+            \textit{Gecko (NLP startup)}
+            \begin{highlights}
+                \item Developed an opinion-mining and product-review summarization pipeline (sentiment aggregation, label extraction, explainable review-rejection) for a large e-commerce platform.
+                \item Built a semantic-similarity and product-deduplication engine to flag duplicate listings created to manipulate search rankings, reducing manual moderation workload.
+            \end{highlights}
+        \end{twocolentry}
+
+        \vspace{0.1 cm}
+
+        % \begin{twocolentry}{
+        %     Tehran, Iran
+        %     Jul. 2019 - Sep. 2019
+        %     }
+        %     \textbf{\textcolor{RoyalBlue}{Bachelor's Internship}}\\
+        %     \textit{Institute For Research in Fundamental Sciences}
+        %     \begin{highlights}
+        %         \item Designed and developed a Forex market trend prediction prototype utilizing Deep Neural Networks and Time-Series Analysis.
+        %         \item Assessment of RL-based trading agents to act on signals generated by the forecasting model, optimizing trading strategies and outcomes.
+        %         \end{highlights}
+        % \end{twocolentry}
+
+
+
+
+    % --- Honors and Awards section (disabled; flip \iffalse to \iftrue to restore) ---
+    \iffalse
+    \section{Honors and Awards}
+
+        \begin{onecolentry}
+            \textbf{15th place, International RoboCup 2014 (João Pessoa, Brazil):} 2D Soccer Simulation League.
+        \end{onecolentry}
+
+        \vspace{0.1 cm}
+
+        \begin{onecolentry}
+            \textbf{1st Place in “Salam Cup” 2014:} 2D Soccer Simulation League and ACM League.
+        \end{onecolentry}
+
+        \vspace{0.1 cm}
+
+        \begin{onecolentry}
+            \textbf{6th Place in “Sharif Cup” 2012:} 2D Soccer Simulation League.
+        \end{onecolentry}
+
+        \vspace{0.1 cm}
+
+        \begin{onecolentry}
+            \textbf{2nd Place in 2012 Tehran Discrete Mathematics Exam.}
+        \end{onecolentry}
+
+        \vspace{0.1 cm}
+
+        \begin{onecolentry}
+            \textbf{Qualified:} 2nd stage of IMC (Bulgaria), Iran’s Physics Olympiad, and Iran’s Literature Olympiad.
+        \end{onecolentry}
+    \fi
+    % --- end disabled section ---
+
+
+
+
+    \section{Technical Skills}
+        \begin{onecolentry}
+            \textbf{Mechanistic Interpretability:} circuit discovery; circuit evaluation; activation patching; causal interventions; feature probing; representation analysis; TransformerLens; NNsight.
+        \end{onecolentry}
+
+        \vspace{0.05 cm}
+
+        \begin{onecolentry}
+            \textbf{NLP \& Language Models:} parameter-efficient fine-tuning; LoRA; adapters; text embeddings; dense retrieval; retrieval-augmented generation; dialogue summarization; model benchmarking; human evaluation.
+        \end{onecolentry}
+
+        \vspace{0.05 cm}
+
+        \begin{onecolentry}
+            \textbf{AutoML \& Optimization:} Bayesian hyperparameter optimization; AutoML; active learning; Optuna.
+        \end{onecolentry}
+
+        \vspace{0.05 cm}
+
+        \begin{onecolentry}
+            \textbf{Interpretable ML:} SHAP; feature attribution; surrogate models.
+        \end{onecolentry}
+
+        \vspace{0.05 cm}
+
+        \begin{onecolentry}
+            \textbf{Network Analysis \& Graph ML:} social network analysis; supervised and unsupervised bot detection; graph analysis; NetworkX, Gephi, PyTorch Geometric.
+        \end{onecolentry}
+
+        \vspace{0.05 cm}
+
+        \begin{onecolentry}
+            \textbf{Programming \& Infrastructure:} Python; PyTorch; Hugging Face Transformers; scikit-learn; Git; Weights \& Biases.
+        \end{onecolentry}
+
+
+
+
+    \section{Languages}
+        \begin{onecolentry}
+            \begin{tabbing}
+                \textbf{English:} TOEFL (115/120) - C2 \hspace{2cm} \= \textbf{German:} TestDaF (4/5) - C1
+            \end{tabbing}
+        \end{onecolentry}
+
+
+\end{document}

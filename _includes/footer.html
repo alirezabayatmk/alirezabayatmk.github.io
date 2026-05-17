@@ -1,0 +1,13 @@
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <p>© {{ site.time | date: "%Y" }} {{ site.author }}.
+      Built with <a href="https://jekyllrb.com">Jekyll</a> and hosted on GitHub Pages.</p>
+    <p class="site-footer-links">
+      {% if site.github_username %}<a href="https://github.com/{{ site.github_username }}">GitHub</a>{% endif %}
+      {% if site.linkedin_username %} · <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}">LinkedIn</a>{% endif %}
+      {% if site.scholar_url %} · <a href="{{ site.scholar_url }}">Google Scholar</a>{% endif %}
+      · <a href="mailto:{{ site.email }}">Email</a>
+      · <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+    </p>
+  </div>
+</footer>

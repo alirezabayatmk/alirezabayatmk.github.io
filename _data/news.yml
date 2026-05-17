@@ -1,0 +1,17 @@
+# Most recent first. The homepage shows the top 6.
+# Use `html` if you want links/markup; otherwise `text` is fine.
+
+- date: 2026-05-01
+  html: "Personal site is live. First blog post: <a href='/blog/2026/05/17/hello-world/'>Hello, world</a>."
+
+- date: 2026-01-01
+  html: "Will be TA for <em>Introduction to Large Language Models</em> at TU Darmstadt in WS 2026/27."
+
+- date: 2025-04-01
+  html: "Started my PhD at the <a href='https://www.informatik.tu-darmstadt.de/ukp/ukp_home/index.en.jsp'>UKP Lab</a>, TU Darmstadt, with Prof. Iryna Gurevych."
+
+- date: 2025-06-01
+  html: "Co-authored paper out in <em>Frontiers in Communication</em>: <em>Decoupled Agendas Under Repression</em>."
+
+- date: 2024-08-01
+  html: "Paper accepted at <em>ACL 2024</em>: <em>LLM-based Rewriting of Inappropriate Argumentation using RLMF</em>."

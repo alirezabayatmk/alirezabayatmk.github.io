@@ -1,0 +1,26 @@
+---
+layout: page
+title: Publications
+permalink: /publications/
+---
+{% assign visible = site.data.publications | where_exp: "p", "p.hidden != true" %}
+{% assign by_year = visible | sort: "year" | reverse | group_by: "year" %}
+{% for group in by_year %}
+  <h2 class="pub-year">{{ group.name }}</h2>
+  <ol class="pub-list">
+    {% for pub in group.items %}
+      <li class="pub">
+        <p class="pub-title">
+          {% if pub.url %}<a href="{{ pub.url }}">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}
+        </p>
+        <p class="pub-meta">
+          {{ pub.authors }} · <em>{{ pub.venue }}</em>, {{ pub.year }}
+          {% if pub.pdf %} · <a href="{{ pub.pdf }}">PDF</a>{% endif %}
+          {% if pub.code %} · <a href="{{ pub.code }}">code</a>{% endif %}
+          {% if pub.bibtex %} · <a href="{{ pub.bibtex }}">bibtex</a>{% endif %}
+        </p>
+        {% if pub.note %}<p class="pub-note">{{ pub.note }}</p>{% endif %}
+      </li>
+    {% endfor %}
+  </ol>
+{% endfor %}

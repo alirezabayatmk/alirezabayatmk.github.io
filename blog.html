@@ -1,0 +1,21 @@
+---
+layout: page
+title: Blog
+permalink: /blog/
+---
+<p class="page-lede">
+  Longer-form writing, usually about things I'm working on or thinking
+  through.
+</p>
+
+<ul class="post-list">
+  {% for post in site.posts %}
+    {% unless post.categories contains "thoughts" %}
+      <li>
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        {% if post.excerpt %}<p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>{% endif %}
+      </li>
+    {% endunless %}
+  {% endfor %}
+</ul>

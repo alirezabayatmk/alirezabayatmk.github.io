@@ -1,0 +1,38 @@
+# Courses and mentoring, surfaced on /teaching/. Same visual style as
+# /publications/: grouped by year, with title + meta + optional description.
+# `year` controls sort order and grouping (use the start year).
+
+courses:
+  - title: "Introduction to Large Language Models"
+    role: "Teaching Assistant (assigned)"
+    venue: "TU Darmstadt"
+    dates: "Winter Semester 2026/27"
+    year: 2026
+    description: "Will deliver lectures and exercises for the LLM portion of the course."
+
+  - title: "Natural Language Processing: A Practical Comprehensive Approach"
+    role: "Instructor"
+    venue: "Filoger Academy of AI"
+    dates: "Jun – Oct 2022"
+    year: 2022
+    description: "Designed and delivered the full curriculum (~30 hours, 50–60 students), covering classical NLP through neural language models with hands-on coding sessions."
+
+  - title: "From One-hot to GPT-3: Introduction to Text Representation & Language Modeling"
+    role: "Instructor"
+    venue: "Loop Academy of AI"
+    dates: "Aug 2020 – Mar 2021"
+    year: 2020
+    description: "Designed and taught a full course on text representations and language modeling, from sparse representations to large pre-trained models (~30 hours, 50–60 students)."
+
+  - title: "Fundamentals of Natural Language Processing"
+    role: "Instructor"
+    venue: "Loop Academy of AI"
+    dates: "Aug 2020 – Mar 2021"
+    year: 2020
+    description: "Designed and taught a companion course on core NLP techniques (~30 hours, 50–60 students)."
+
+mentoring:
+  - name: "Hanifi Akdag"
+    role: "M.Sc. thesis"
+    institution: "TU Darmstadt"
+    co_supervisor: "Jingcheng (Frank) Niu"

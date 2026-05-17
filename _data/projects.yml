@@ -1,0 +1,11 @@
+# Personal / side projects (not university or work projects).
+# Add entries as you build things. Schema:
+#
+# - title:        "Project name"
+#   tagline:      "One-line hook."
+#   description:  "Optional longer paragraph."
+#   stack:        ["Lang", "Tool"]
+#   url:          "https://…"        # canonical link (optional)
+#   repo:         "https://github.com/…"   # optional
+#   demo:         "https://…"        # optional
+#   image:        "/assets/images/projects/foo.png"   # optional
