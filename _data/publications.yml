@@ -1,0 +1,32 @@
+# One entry per publication. Sorted by year descending on the publications
+# page; the homepage shows the five most recent (excluding hidden).
+#
+# Authors: render the list yourself and wrap your own name in <strong>…</strong>
+# so it stands out.
+#
+# Set `hidden: true` to suppress an entry from the rendered site entirely
+# (useful for blind-review submissions).
+
+- title: "Decoupled Agendas Under Repression: Social Media and State Media During COVID-19 in Iran"
+  authors: "H. Kermani, <strong>A. Bayat Makou</strong>, R. Behzadian Nejad"
+  venue: "Frontiers in Communication, 10:1598405"
+  year: 2025
+  url: "https://www.frontiersin.org/journals/communication/articles/10.3389/fcomm.2025.1598405/full"
+
+- title: "LLM-based Rewriting of Inappropriate Argumentation using Reinforcement Learning from Machine Feedback"
+  authors: "T. Ziegenbein, G. Skitalinskaya, <strong>A. Bayat Makou</strong>, H. Wachsmuth"
+  venue: "Proceedings of ACL 2024, pp. 4455–4476"
+  year: 2024
+  url: "https://aclanthology.org/2024.acl-long.244/"
+
+- title: "Bots Versus Humans: Discursive Activism During the Pandemic in the Iranian Twittersphere"
+  authors: "H. Kermani, <strong>A. Bayat Makou</strong>, A. Tafreshi, A. Mohamad Ghodsi, H. Ataee"
+  venue: "Social Media + Society, 9(4)"
+  year: 2023
+  url: "https://journals.sagepub.com/doi/full/10.1177/20563051231216927"
+
+- title: "Computational vs. Qualitative: Analyzing Different Approaches in Identifying Networked Frames During the COVID-19 Crisis"
+  authors: "H. Kermani, <strong>A. Bayat Makou</strong>, A. Tafreshi, A. M. Ghodsi, A. Atashzar, A. Nojoumi"
+  venue: "International Journal of Social Research Methodology"
+  year: 2023
+  url: "https://www.tandfonline.com/doi/full/10.1080/13645579.2023.2186566"

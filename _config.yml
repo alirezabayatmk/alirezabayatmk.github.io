@@ -1,0 +1,58 @@
+# Site settings
+title: Alireza Bayat Makou
+tagline: Researcher · Engineer · Educator
+description: >-
+  Personal site of Alireza Bayat Makou: publications, teaching, projects, and writing.
+author: Alireza Bayat Makou
+email: a.bayatmakou@gmail.com
+
+# Replace with your GitHub Pages URL once the repo is named.
+# For username.github.io repos, leave baseurl as "" and set url to "https://username.github.io".
+# For project sites (e.g. github.com/user/blog), set baseurl: "/blog".
+url: "https://alirezabayatmk.github.io"
+baseurl: ""
+
+# Social / external links — used in the sidebar and footer.
+github_username: alirezabayatmk
+linkedin_username: alireza-bayat-makou
+scholar_url: "https://scholar.google.com/citations?user=Q9rvc9cAAAAJ&hl=en"
+cv_path: "/assets/cv/cv.pdf"
+profile_image: "/assets/images/abmk.jpg"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /blog/:year/:month/:day/:title/
+paginate: 5
+paginate_path: "/blog/page:num/"
+
+# Collections — one entry per section that isn't a flat page.
+collections:
+  publications:
+    output: false
+  projects:
+    output: false
+
+# Default front-matter so we don't repeat layout: page on every file.
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: ""
+    values:
+      layout: page
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - README.md
+  - node_modules

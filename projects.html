@@ -1,0 +1,33 @@
+---
+layout: page
+title: Personal projects
+permalink: /projects/
+---
+<p class="page-lede">
+  Things I've built outside of school and work, usually because I wanted to
+  learn something or scratch an itch.
+</p>
+
+{% if site.data.projects and site.data.projects.size > 0 %}
+  <ul class="project-grid">
+    {% for p in site.data.projects %}
+      <li class="project-card">
+        {% if p.image %}
+          <img class="project-image" src="{{ p.image | relative_url }}" alt="{{ p.title }}">
+        {% endif %}
+        <h3 class="project-title">
+          {% if p.url %}<a href="{{ p.url }}">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}
+        </h3>
+        <p class="project-tagline">{{ p.tagline }}</p>
+        {% if p.description %}<p>{{ p.description }}</p>{% endif %}
+        <p class="project-meta">
+          {% if p.stack %}<span>{{ p.stack | join: " · " }}</span>{% endif %}
+          {% if p.repo %} · <a href="{{ p.repo }}">repo</a>{% endif %}
+          {% if p.demo %} · <a href="{{ p.demo }}">demo</a>{% endif %}
+        </p>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p class="empty-state">Nothing public here yet. Check back soon.</p>
+{% endif %}

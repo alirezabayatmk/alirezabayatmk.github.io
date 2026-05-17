@@ -1,0 +1,33 @@
+---
+layout: page
+title: Teaching
+permalink: /teaching/
+---
+
+{% assign by_year = site.data.teaching.courses | sort: "year" | reverse | group_by: "year" %}
+{% for group in by_year %}
+  <h2 class="pub-year">{{ group.name }}</h2>
+  <ol class="pub-list">
+    {% for course in group.items %}
+      <li class="pub">
+        <p class="pub-title">{{ course.title }}</p>
+        <p class="pub-meta">{{ course.role }} · {{ course.venue }} · {{ course.dates }}</p>
+        {% if course.description %}<p class="pub-note">{{ course.description }}</p>{% endif %}
+      </li>
+    {% endfor %}
+  </ol>
+{% endfor %}
+
+{% if site.data.teaching.mentoring and site.data.teaching.mentoring.size > 0 %}
+  <h2 class="pub-year">Mentoring</h2>
+  <ol class="pub-list">
+    {% for m in site.data.teaching.mentoring %}
+      <li class="pub">
+        <p class="pub-title">{{ m.name }}</p>
+        <p class="pub-meta">
+          {{ m.role }} · {{ m.institution }}{% if m.co_supervisor %} · co-supervised with {{ m.co_supervisor }}{% endif %}
+        </p>
+      </li>
+    {% endfor %}
+  </ol>
+{% endif %}
