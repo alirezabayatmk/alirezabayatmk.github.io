@@ -1,6 +1,9 @@
 # Most recent first. The homepage shows the top 6.
 # Use `html` if you want links/markup; otherwise `text` is fine.
 
+- date: 2026-08-14
+  html: "<a href='https://openreview.net/forum?id=Ur42Xx1QPv'><em>Many Circuits, One Mechanism</em></a> is accepted at <em>TMLR</em> with a Featured Certification."
+
 - date: 2026-05-01
   html: "Personal site is live. First blog post: <a href='/blog/2026/05/17/hello-world/'>Hello, world</a>."
 
