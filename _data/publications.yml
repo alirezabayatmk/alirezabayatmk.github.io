@@ -7,6 +7,13 @@
 # Set `hidden: true` to suppress an entry from the rendered site entirely
 # (useful for blind-review submissions).
 
+- title: "Many Circuits, One Mechanism: Input Variation and Evaluation Granularity in Circuit Discovery"
+  authors: "<strong>A. Bayat Makou</strong>, J. Niu, S. Dutta, I. Gurevych"
+  venue: "Transactions on Machine Learning Research (TMLR)"
+  year: 2026
+  note: "Featured Certification."
+  url: "https://openreview.net/forum?id=Ur42Xx1QPv"
+
 - title: "Decoupled Agendas Under Repression: Social Media and State Media During COVID-19 in Iran"
   authors: "H. Kermani, <strong>A. Bayat Makou</strong>, R. Behzadian Nejad"
   venue: "Frontiers in Communication, 10:1598405"
