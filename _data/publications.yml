@@ -7,6 +7,12 @@
 # Set `hidden: true` to suppress an entry from the rendered site entirely
 # (useful for blind-review submissions).
 
+- title: "MURANO: Design, Run, and Reproduce Mechanistic Interpretability Experiments as Composable Pipelines"
+  authors: "<strong>A. Bayat Makou</strong>, E. Böge, P. G. Hoang, F. Tiblias, J. Niu, S. Dutta, R. Eckart de Castilho, I. Gurevych"
+  venue: "Proceedings of EMNLP 2026 (System Demonstrations)"
+  year: 2026
+  url: "https://arxiv.org/abs/2608.30662"
+
 - title: "Many Circuits, One Mechanism: Input Variation and Evaluation Granularity in Circuit Discovery"
   authors: "<strong>A. Bayat Makou</strong>, J. Niu, S. Dutta, I. Gurevych"
   venue: "Transactions on Machine Learning Research (TMLR)"

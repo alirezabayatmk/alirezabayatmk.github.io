@@ -1,6 +1,9 @@
 # Most recent first. The homepage shows the top 6.
 # Use `html` if you want links/markup; otherwise `text` is fine.
 
+- date: 2026-09-01
+  html: "<a href='https://arxiv.org/abs/2608.30662'><em>MURANO</em></a> is accepted to <em>EMNLP 2026</em> (System Demonstrations)."
+
 - date: 2026-08-14
   html: "<a href='https://openreview.net/forum?id=Ur42Xx1QPv'><em>Many Circuits, One Mechanism</em></a> is accepted at <em>TMLR</em> with a Featured Certification."
 
