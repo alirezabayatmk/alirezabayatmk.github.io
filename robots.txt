@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alirezabayatmk.github.io/sitemap.xml
+Sitemap: https://alirezabayatmk.github.io/language-modeling/sitemap.xml

@@ -44,11 +44,17 @@ defaults:
       path: ""
     values:
       layout: page
+  # keep Google's Search Console verification file out of the sitemap
+  - scope:
+      path: "google23726c7c63e96dbf.html"
+    values:
+      sitemap: false
 
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-paginate
+  - jekyll-sitemap
 
 exclude:
   - Gemfile
