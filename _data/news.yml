@@ -8,7 +8,7 @@
   html: "<a href='https://openreview.net/forum?id=Ur42Xx1QPv'><em>Many Circuits, One Mechanism</em></a> is accepted at <em>TMLR</em> with a Featured Certification."
 
 - date: 2026-05-01
-  html: "Personal site is live. First blog post: <a href='/blog/2026/05/17/hello-world/'>Hello, world</a>."
+  text: "Personal site is live."
 
 - date: 2026-01-01
   html: "Will be TA for <em>Introduction to Large Language Models</em> at TU Darmstadt in WS 2026/27."
